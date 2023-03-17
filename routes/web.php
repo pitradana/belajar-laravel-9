@@ -2,6 +2,7 @@
 
 use Faker\Guesser\Name;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\StudentController;
 
 /*
 |--------------------------------------------------------------------------
@@ -18,10 +19,12 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('/greeting', function () {
-    return 'Hello World!';
-})->name('greeting');
+// Route::get('/greeting', function () {
+//     return 'Hello World!';
+// })->name('greeting');
 
-Route::get('/greeting/{name}', function ($name) {
-    return 'Hello ' . $name;
-})->name('greeting_with_name');
+// Route::get('/greeting/{name}', function ($name) {
+//     return view('example', ['name' => $name]);
+// })->name('greeting_with_name');
+
+Route::get('/greeting/{id}', [StudentController::class, "show"]);
