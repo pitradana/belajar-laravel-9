@@ -17,9 +17,9 @@
         the current value is {{ $i }};
     @endfor --}}
 
-    <p>Your students are 
-    @foreach ($students as $student)
-        <p>{{ $student->name }}</p> 
+    <p>Student Name : {{ $student->name }}</p> 
+    @foreach ($activities as $activity)
+        <p>{{ $activity->name }}</p> 
     @endforeach
 
     
