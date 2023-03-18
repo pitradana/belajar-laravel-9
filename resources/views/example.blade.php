@@ -17,6 +17,11 @@
         the current value is {{ $i }};
     @endfor --}}
 
-    <p>Your Address is {{ $address }}</p>
+    <p>Your students are 
+    @foreach ($students as $student)
+        <p>{{ $student->name }}</p> 
+    @endforeach
+
+    
 </body>
 </html>
