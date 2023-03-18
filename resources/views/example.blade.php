@@ -17,6 +17,6 @@
         the current value is {{ $i }};
     @endfor --}}
 
-    <p>Hi {{ $name }}</p>
+    <p>Your Address is {{ $address }}</p>
 </body>
 </html>

@@ -9,7 +9,7 @@ class StudentController extends Controller
 {
     public function show($id)
     {
-        $name = Student::find($id)->name;
-        return view('example', ['name' => $name]);
+        $address = Student::find($id)->contact->address;
+        return view('example', ['address' => $address]);
     }
 }
