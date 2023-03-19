@@ -15,9 +15,9 @@ use App\Http\Controllers\StudentController;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+Route::get('/',[StudentController::class, 'index']);
+
+Route::get('/greeting/{id}', [StudentController::class, 'show']);
 
 // Route::get('/greeting', function () {
 //     return 'Hello World!';
@@ -27,4 +27,3 @@ Route::get('/', function () {
 //     return view('example', ['name' => $name]);
 // })->name('greeting_with_name');
 
-Route::get('/greeting/{id}', [StudentController::class, "show"]);
