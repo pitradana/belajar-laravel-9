@@ -17,7 +17,7 @@ use App\Http\Controllers\StudentController;
 
 Route::get('/',[StudentController::class, 'index']);
 
-Route::get('/show/{id}', [StudentController::class, 'show']);
+Route::get('/show/{id}', [StudentController::class, 'show'])->name('show');
 
 Route::get('/filter', [StudentController::class, 'filter']);
 // Route::get('/greeting', function () {
