@@ -17,11 +17,13 @@
         the current value is {{ $i }};
     @endfor --}}
 
-    <p>Student Name : {{ $student->name }}</p> 
-    @foreach ($activities as $activity)
-        <p>{{ $activity->name }}</p> 
-    @endforeach
-
-    
+    <p>Student ID: {{ $student->id }}</p>
+    <p>Student Name : {{ $student->name }}</p>
+    <p>Student Teacher: {{ $student->teacher->name }}</p>
+    <p>
+        @foreach ($student->activities as $activity)
+            <p>{{ $activity->name }}</p> 
+        @endforeach
+    </p>
 </body>
 </html>

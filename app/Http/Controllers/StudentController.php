@@ -12,8 +12,16 @@ class StudentController extends Controller
 
     public function index()
     {
-        $students = Student::all();
+        $students = Student::paginate(2);
         return view('index', ['students' => $students]);
+    }
+
+    public function filter()
+    {
+        $students = Student::where('score', '>=', '70')
+        ->where('name', 'LIKE', '%a%')
+        ->get();
+        return view('filter', compact('students'));
     }
 
     public function show($id)
@@ -26,7 +34,6 @@ class StudentController extends Controller
         // return view('example', ['activity' => $activity,'students' => $students]);
 
         $student = Student::find($id);
-        $activities = $student->activities;
-        return view('example', ['activities' => $activities, 'student' => $student]);
+        return view('show', ['student' => $student]);
     }
 }
