@@ -24,6 +24,12 @@ Route::get('/filter', [StudentController::class, 'filter']);
 Route::get('/create', [StudentController::class, 'create'])->name('create');
 
 Route::post('/create', [StudentController::class, 'store'])->name('store');
+
+Route::get('/edit/{student}',[StudentController::class, 'edit'])->name('edit');
+
+Route::patch('/update/{student}', [StudentController::class, 'update'])->name('update');
+
+Route::delete('/delete/{student}', [StudentController::class, 'delete'])->name('delete');
 // Route::get('/greeting', function () {
 //     return 'Hello World!';
 // })->name('greeting');
