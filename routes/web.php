@@ -15,11 +15,15 @@ use App\Http\Controllers\StudentController;
 |
 */
 
-Route::get('/',[StudentController::class, 'index']);
+Route::get('/',[StudentController::class, 'index'])->name('index');
 
 Route::get('/show/{id}', [StudentController::class, 'show'])->name('show');
 
 Route::get('/filter', [StudentController::class, 'filter']);
+
+Route::get('/create', [StudentController::class, 'create'])->name('create');
+
+Route::post('/create', [StudentController::class, 'store'])->name('store');
 // Route::get('/greeting', function () {
 //     return 'Hello World!';
 // })->name('greeting');

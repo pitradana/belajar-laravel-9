@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Models\Student;
 use App\Models\Teacher;
 use App\Models\Activity;
+use Illuminate\Support\Facades\Redirect;
 
 class StudentController extends Controller
 {
@@ -35,5 +36,26 @@ class StudentController extends Controller
 
         $student = Student::find($id);
         return view('show', ['student' => $student]);
+    }
+
+    public function create()
+    {
+        return view('create');
+    }
+
+    public function store(Request $request)
+    {
+        $request->validate([
+            'name' => 'required',
+            'score' => 'required'
+        ]);
+
+        Student::create([
+            'name' => $request->name,
+            'score' => $request->score,
+            'teacher_id' => 1
+        ]);
+
+        return Redirect::route('index');
     }
 }

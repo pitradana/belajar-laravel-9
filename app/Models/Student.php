@@ -9,6 +9,12 @@ class Student extends Model
 {
     use HasFactory;
 
+    protected $fillable = [
+        'name',
+        'score',
+        'teacher_id'
+    ];
+
     public function contact()
     {
         return $this->hasOne(Contact::class);
