@@ -38,3 +38,7 @@ Route::delete('/delete/{student}', [StudentController::class, 'delete'])->name('
 //     return view('example', ['name' => $name]);
 // })->name('greeting_with_name');
 
+
+Auth::routes();
+
+Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
