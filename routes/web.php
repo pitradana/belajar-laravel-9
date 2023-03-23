@@ -1,7 +1,9 @@
 <?php
 
+use App\Http\Controllers\HomeController;
 use Faker\Guesser\Name;
 use Illuminate\Support\Facades\Route;
+use Illuminate\Support\Facades\Auth;
 use App\Http\Controllers\StudentController;
 
 /*
@@ -30,6 +32,10 @@ Route::get('/edit/{student}',[StudentController::class, 'edit'])->name('edit');
 Route::patch('/update/{student}', [StudentController::class, 'update'])->name('update');
 
 Route::delete('/delete/{student}', [StudentController::class, 'delete'])->name('delete');
+
+Route::get('/update_password', [HomeController::class, 'update_password'])->name('update_password');
+
+Route::patch('/store_password', [HomeController::class, 'store_password'])->name('store_password');
 // Route::get('/greeting', function () {
 //     return 'Hello World!';
 // })->name('greeting');
@@ -38,10 +44,6 @@ Route::delete('/delete/{student}', [StudentController::class, 'delete'])->name('
 //     return view('example', ['name' => $name]);
 // })->name('greeting_with_name');
 
-
-Auth::routes();
-
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
 Auth::routes();
 

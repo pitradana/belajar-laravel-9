@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Models\Student;
 use App\Models\Teacher;
 use App\Models\Activity;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Redirect;
 
 class StudentController extends Controller
@@ -13,8 +14,11 @@ class StudentController extends Controller
 
     public function index()
     {
+        $user = Auth::user();
+        $id = Auth::id();
+
         $students = Student::paginate(2);
-        return view('index', ['students' => $students]);
+        return view('index', ['students' => $students, 'user' => $user, 'id' => $id]);
     }
 
     public function filter()

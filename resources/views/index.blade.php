@@ -7,6 +7,19 @@
     <title>Document</title>
 </head>
 <body>
+    @if (Auth::check())
+        <form action="{{ route('logout') }}" method="post">
+            @csrf
+            <button type="submit">Logout</button>
+        </form>
+        <p>ID: {{ $id }}</p>
+        <p>Name: {{ $user->name }}</p>
+        <p>email: {{ $user->email }}</p>
+    @else
+        <a href="{{ route('login') }}">Login</a>
+        <a href="{{ route('register') }}">Register</a>
+    @endif
+
     <table border="1px">
         <tr>
             <th>Id</th>
