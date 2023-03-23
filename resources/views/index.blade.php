@@ -7,27 +7,32 @@
     <title>Document</title>
 </head>
 <body>
+    <h1>{{ __('welcome to this page!') }}</h1>
+    <p>Locale: {{ App::getLocale() }}</p>
+    <a href="{{ route('set_locale', 'en')}}">English</a>
+    <a href="{{ route('set_locale', 'id')}}">Indonesia</a>
+    <br><br>
     @if (Auth::check())
         <form action="{{ route('logout') }}" method="post">
             @csrf
             <button type="submit">Logout</button>
         </form>
         <p>ID: {{ $id }}</p>
-        <p>Name: {{ $user->name }}</p>
-        <p>Email: {{ $user->email }}</p>
-        <p>Role: {{ $user->role }}</p>
+        <p>{{__('Name')}}: {{ $user->name }}</p>
+        <p>{{__('Email')}}: {{ $user->email }}</p>
+        <p>{{__('Role')}}: {{ $user->role }}</p>
     @else
-        <a href="{{ route('login') }}">Login</a>
-        <a href="{{ route('register') }}">Register</a>
+        <a href="{{ route('login') }}">{{__('Login')}}</a>
+        <a href="{{ route('register') }}">{{__('Register')}}</a>
     @endif
 
     <table border="1px">
         <tr>
             <th>Id</th>
-            <th>Nama</th>
-            <th>Score</th>
-            <th>teacher_id</th>
-            <th>Actions</th>
+            <th>{{__('Name')}}</th>
+            <th>{{__('Score')}}</th>
+            <th>{{__('Teacher_id')}}</th>
+            <th>{{__('Actions')}}</th>
         </tr>
         @foreach ($students as $student)
             <tr>
@@ -40,21 +45,21 @@
                 <td>
                     <form action="{{route('edit', $student)}}" method="get">
                         @csrf
-                        <button type="submit">Edit</button>
+                        <button type="submit">{{__('Edit')}}</button>
                     </form>
                     <form action="{{route('delete', $student)}}" method="post">
                         @method('delete')
                         @csrf
-                        <button type="submit">Delete</button>
+                        <button type="submit">{{__('Delete')}}</button>
                     </form>
                 </td>
             </tr>
         @endforeach
     </table>
 
-    Current Page: {{ $students->currentPage() }} <br>
-    Total Data: {{ $students->total() }} <br>
-    Data Per Page: {{ $students->perPage() }} <br>
+    {{__('Current Page')}}: {{ $students->currentPage() }} <br>
+    {{__('Total Data')}}: {{ $students->total() }} <br>
+    {{__('Data Per Page')}}: {{ $students->perPage() }} <br>
 
     {{ $students->links('pagination::bootstrap-4') }}
 </body>
